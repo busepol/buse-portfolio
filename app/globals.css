@@ -1,8 +1,14 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+@keyframes height {
+  0%, 100% { height: 20%; }
+  50% { height: 80%; }
 }
 
 @theme inline {
@@ -18,6 +24,9 @@
     --foreground: #ededed;
   }
 }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin 4s linear infinite; }
 
 body {
   background: var(--background);
