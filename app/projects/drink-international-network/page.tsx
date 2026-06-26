@@ -196,24 +196,24 @@ export default function DrinkNetworkProject() {
       {/* Placeholders for Terminal, Comm, and Italian modes will go below here... */}
     
     
-      {/* =========================================
-            MODE 2: TERMINAL (CLI / Developer View)
-            ========================================= */}
-        {currentTheme === 'terminal' && (
-          <main className="max-w-4xl mx-auto p-6 md:p-12 py-16 animate-in fade-in zoom-in-95 duration-500 font-mono text-green-500 bg-[#050505] min-h-screen shadow-2xl border border-green-900/30">
-            
-            {/* CLI Header & Back Command */}
-            <div className="mb-12 border-b border-green-900/50 pb-4">
-              <div className="flex justify-between items-end mb-4">
-                <div className="text-xs text-green-600">Session ID: 8943-TX // Secure Connection Established</div>
-                <button 
-                  onClick={() => window.location.href = '/'}
-                  className="text-xs border border-green-700 bg-green-950/30 hover:bg-green-900/50 text-green-400 px-3 py-1 transition-all"
-                >
-                  $ cd ..
-                </button>
-              </div>
-              <pre className="text-green-400 font-bold text-[10px] md:text-sm leading-tight hidden sm:block">
+{/* =========================================
+    MODE 2: TERMINAL (CLI / Developer View)
+    ========================================= */}
+{currentTheme === 'terminal' && (
+  <main className="max-w-4xl mx-auto p-6 md:p-12 py-16 animate-in fade-in zoom-in-95 duration-500 font-mono text-green-500 bg-[#050505] min-h-screen shadow-2xl border border-fuchsia-900/30">
+    
+    {/* CLI Header & Back Command */}
+    <div className="mb-12 border-b border-fuchsia-900/50 pb-4">
+      <div className="flex justify-between items-end mb-4">
+        <div className="text-xs text-fuchsia-400">Session ID: 8943-TX // Secure Connection Established</div>
+        <button 
+          onClick={() => window.location.href = '/'}
+          className="text-xs border border-fuchsia-700 bg-fuchsia-950/30 hover:bg-fuchsia-900/50 text-fuchsia-400 px-3 py-1 transition-all"
+        >
+          $ cd ..
+        </button>
+      </div>
+      <pre className="text-emerald-400 font-bold text-[10px] md:text-sm leading-tight hidden sm:block">
 {`
  ____       _       _      ___       _     
 |  _ \\ _ __(_)_ __ | | __ |_ _|_ __ | |_   
@@ -222,136 +222,136 @@ export default function DrinkNetworkProject() {
 |____/|_|  |_|_| |_|_|\\_\\ |___|_| |_|\\__|  
 :: ENTERPRISE CAMPUS NETWORK ARCHITECTURE ::
 `}
-              </pre>
-            </div>
+      </pre>
+    </div>
 
-            <div className="space-y-8 text-sm md:text-base leading-relaxed">
-              
-              {/* Context Section */}
-              <div>
-                <div className="flex items-center gap-2 mb-2 text-green-400">
-                  <span className="font-bold">root@buse-os:~/projects/drink-intl$</span>
-                  <span className="typing-animation">cat project_origins.md</span>
-                </div>
-                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-2 space-y-4">
-                  <p>
-                    This infrastructure design is modeled closely after a production enterprise campus network observed during an industry internship. While experiencing the day-to-day operations of a corporate environment, I analyzed and reverse-engineered the core networking topology to study how modern mid-sized enterprises balance high-availability, scalability, and strict security segmentation.
-                  </p>
-                  <p>
-                    The design implements a highly available triangle topology at the distribution and core layers to ensure near-zero downtime. It is split into distinct, functional departments, an isolated server farm infrastructure, and a secure edge WAN connection.
-                  </p>
-                </div>
-              </div>
+    <div className="space-y-8 text-sm md:text-base leading-relaxed">
+      
+      {/* Context Section */}
+      <div>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-bold text-fuchsia-400">admin@buse-os:~/projects/drink-intl$</span>
+          <span className="text-white typing-animation">cat project_origins.md</span>
+        </div>
+        <div className="pl-4 border-l-2 border-fuchsia-900 text-green-500/90 py-2 space-y-4">
+          <p>
+            This infrastructure design is modeled closely after a production enterprise campus network observed during an industry internship. While experiencing the day-to-day operations of a corporate environment, I analyzed and reverse-engineered the core networking topology to study how modern mid-sized enterprises balance high-availability, scalability, and strict security segmentation.
+          </p>
+          <p>
+            The design implements a highly available triangle topology at the distribution and core layers to ensure near-zero downtime. It is split into distinct, functional departments, an isolated server farm infrastructure, and a secure edge WAN connection.
+          </p>
+        </div>
+      </div>
 
-              {/* Technical Stack Section */}
-              <div>
-                <div className="flex items-center gap-2 mb-2 text-green-400">
-                  <span className="font-bold">root@buse-os:~/projects/drink-intl$</span>
-                  <span>./extract_protocols.sh</span>
-                </div>
-                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-2 space-y-4">
-                  <div>
-                    <span className="font-bold text-green-300">{'>>'} Layer 3 Routing (OSPF):</span> Single-Area OSPF (Area 0) for sub-second route convergence and optimal path selection.
-                  </div>
-                  <div>
-                    <span className="font-bold text-green-300">{'>>'} Gateway Redundancy (HSRP):</span> Seamless first-hop virtual gateway redundancy across all end-user subnets.
-                  </div>
-                  <div>
-                    <span className="font-bold text-green-300">{'>>'} Link Aggregation (LACP):</span> EtherChannel for backbone bandwidth aggregation and link-level failover.
-                  </div>
-                  <div>
-                    <span className="font-bold text-green-300">{'>>'} Logical Segmentation:</span> IEEE 802.1Q VLAN tagging and auxiliary Voice VLAN mapping to separate deterministic traffic.
-                  </div>
-                </div>
-              </div>
+      {/* Technical Stack Section */}
+      <div>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-bold text-fuchsia-400">admin@buse-os:~/projects/drink-intl$</span>
+          <span className="text-white">./extract_protocols.sh</span>
+        </div>
+        <div className="pl-4 border-l-2 border-fuchsia-900 text-green-500/90 py-2 space-y-4">
+          <div>
+            <span className="font-bold text-cyan-400">{'>>'} Layer 3 Routing (OSPF):</span> Single-Area OSPF (Area 0) for sub-second route convergence and optimal path selection.
+          </div>
+          <div>
+            <span className="font-bold text-cyan-400">{'>>'} Gateway Redundancy (HSRP):</span> Seamless first-hop virtual gateway redundancy across all end-user subnets.
+          </div>
+          <div>
+            <span className="font-bold text-cyan-400">{'>>'} Link Aggregation (LACP):</span> EtherChannel for backbone bandwidth aggregation and link-level failover.
+          </div>
+          <div>
+            <span className="font-bold text-cyan-400">{'>>'} Logical Segmentation:</span> IEEE 802.1Q VLAN tagging and auxiliary Voice VLAN mapping to separate deterministic traffic.
+          </div>
+        </div>
+      </div>
 
-              {/* VLAN Table Section */}
-              <div>
-                <div className="flex items-center gap-2 mb-2 text-green-400">
-                  <span className="font-bold">root@buse-os:~/projects/drink-intl$</span>
-                  <span>show vlan brief</span>
-                </div>
-                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-2 overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-green-800 text-green-300">
-                        <th className="py-2 pr-4">VLAN</th>
-                        <th className="py-2 pr-4">NAME</th>
-                        <th className="py-2 pr-4 hidden sm:table-cell">PRIMARY_ELEMENTS</th>
-                        <th className="py-2">GATEWAY_IP</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-sm">
-                      <tr className="border-b border-green-900/30">
-                        <td className="py-2 pr-4 font-bold">10</td>
-                        <td className="py-2 pr-4">Corporate_Data</td>
-                        <td className="py-2 pr-4 hidden sm:table-cell text-green-600">PC1, Laptop2, Printers</td>
-                        <td className="py-2">192.168.10.1</td>
-                      </tr>
-                      <tr className="border-b border-green-900/30">
-                        <td className="py-2 pr-4 font-bold">20</td>
-                        <td className="py-2 pr-4">Eng_Workstations</td>
-                        <td className="py-2 pr-4 hidden sm:table-cell text-green-600">PC2, PC3, Laptops</td>
-                        <td className="py-2">192.168.20.1</td>
-                      </tr>
-                      <tr className="border-b border-green-900/30">
-                        <td className="py-2 pr-4 font-bold">30</td>
-                        <td className="py-2 pr-4">Server_Farm</td>
-                        <td className="py-2 pr-4 hidden sm:table-cell text-green-600">App & Storage Servers</td>
-                        <td className="py-2">192.168.30.1</td>
-                      </tr>
-                      <tr className="border-b border-green-900/30">
-                        <td className="py-2 pr-4 font-bold">60</td>
-                        <td className="py-2 pr-4">IoT_Smart_Infra</td>
-                        <td className="py-2 pr-4 hidden sm:table-cell text-green-600">RFID, WAPs, Sensors</td>
-                        <td className="py-2">192.168.60.1</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-4 font-bold">70</td>
-                        <td className="py-2 pr-4 text-green-300">Voice_IP [QoS]</td>
-                        <td className="py-2 pr-4 hidden sm:table-cell text-green-600">Cisco 7960 IP Phones</td>
-                        <td className="py-2">192.168.70.1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+      {/* VLAN Table Section */}
+      <div>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-bold text-fuchsia-400">admin@buse-os:~/projects/drink-intl$</span>
+          <span className="text-white">show vlan brief</span>
+        </div>
+        <div className="pl-4 border-l-2 border-fuchsia-900 text-green-500/90 py-2 overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-fuchsia-900 text-cyan-400">
+                <th className="py-2 pr-4">VLAN</th>
+                <th className="py-2 pr-4">NAME</th>
+                <th className="py-2 pr-4 hidden sm:table-cell">PRIMARY_ELEMENTS</th>
+                <th className="py-2">GATEWAY_IP</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm">
+              <tr className="border-b border-fuchsia-900/30">
+                <td className="py-2 pr-4 font-bold text-emerald-400">10</td>
+                <td className="py-2 pr-4">Corporate_Data</td>
+                <td className="py-2 pr-4 hidden sm:table-cell text-green-600">PC1, Laptop2, Printers</td>
+                <td className="py-2 text-white">192.168.10.1</td>
+              </tr>
+              <tr className="border-b border-fuchsia-900/30">
+                <td className="py-2 pr-4 font-bold text-emerald-400">20</td>
+                <td className="py-2 pr-4">Eng_Workstations</td>
+                <td className="py-2 pr-4 hidden sm:table-cell text-green-600">PC2, PC3, Laptops</td>
+                <td className="py-2 text-white">192.168.20.1</td>
+              </tr>
+              <tr className="border-b border-fuchsia-900/30">
+                <td className="py-2 pr-4 font-bold text-emerald-400">30</td>
+                <td className="py-2 pr-4">Server_Farm</td>
+                <td className="py-2 pr-4 hidden sm:table-cell text-green-600">App & Storage Servers</td>
+                <td className="py-2 text-white">192.168.30.1</td>
+              </tr>
+              <tr className="border-b border-fuchsia-900/30">
+                <td className="py-2 pr-4 font-bold text-emerald-400">60</td>
+                <td className="py-2 pr-4">IoT_Smart_Infra</td>
+                <td className="py-2 pr-4 hidden sm:table-cell text-green-600">RFID, WAPs, Sensors</td>
+                <td className="py-2 text-white">192.168.60.1</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4 font-bold text-emerald-400">70</td>
+                <td className="py-2 pr-4 text-cyan-300">Voice_IP [QoS]</td>
+                <td className="py-2 pr-4 hidden sm:table-cell text-green-600">Cisco 7960 IP Phones</td>
+                <td className="py-2 text-white">192.168.70.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-              {/* Validation Section */}
-              <div>
-                <div className="flex items-center gap-2 mb-2 text-green-400">
-                  <span className="font-bold">root@buse-os:~/projects/drink-intl$</span>
-                  <span>make run-tests</span>
-                </div>
-                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-2 space-y-2">
-                  <div className="flex gap-2">
-                    <span className="text-green-300 font-bold">[PASS]</span>
-                    <span><strong className="text-green-400">OSPF Adjacencies:</strong> Validated full DR/BDR synchronization between L3 switches and the perimeter router.</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="text-green-300 font-bold">[PASS]</span>
-                    <span><strong className="text-green-400">HSRP State Management:</strong> Monitored active/standby designations and verified preempt operations during link failure simulations.</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="text-green-300 font-bold">[PASS]</span>
-                    <span><strong className="text-green-400">LACP EtherChannel:</strong> Ensured logical interfaces display a Layer 2 'In Use' state with ports successfully bundled.</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="text-green-300 font-bold">[PASS]</span>
-                    <span><strong className="text-green-400">Data Plane Reachability:</strong> Executed extended ping and traceroute tests validating connectivity up to the simulated ISP edge.</span>
-                  </div>
-                </div>
-              </div>
+      {/* Validation Section */}
+      <div>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-bold text-fuchsia-400">admin@buse-os:~/projects/drink-intl$</span>
+          <span className="text-white">make run-tests</span>
+        </div>
+        <div className="pl-4 border-l-2 border-fuchsia-900 text-green-500/90 py-2 space-y-2">
+          <div className="flex gap-2">
+            <span className="text-amber-500 font-bold">[PASS]</span>
+            <span><strong className="text-emerald-400">OSPF Adjacencies:</strong> Validated full DR/BDR synchronization between L3 switches and the perimeter router.</span>
+          </div>
+          <div className="flex gap-2">
+            <span className="text-amber-500 font-bold">[PASS]</span>
+            <span><strong className="text-emerald-400">HSRP State Management:</strong> Monitored active/standby designations and verified preempt operations during link failure simulations.</span>
+          </div>
+          <div className="flex gap-2">
+            <span className="text-amber-500 font-bold">[PASS]</span>
+            <span><strong className="text-emerald-400">LACP EtherChannel:</strong> Ensured logical interfaces display a Layer 2 'In Use' state with ports successfully bundled.</span>
+          </div>
+          <div className="flex gap-2">
+            <span className="text-amber-500 font-bold">[PASS]</span>
+            <span><strong className="text-emerald-400">Data Plane Reachability:</strong> Executed extended ping and traceroute tests validating connectivity up to the simulated ISP edge.</span>
+          </div>
+        </div>
+      </div>
 
-              {/* Active Prompt */}
-              <div className="pt-8 flex items-center gap-2 text-green-400">
-                <span className="font-bold">root@buse-os:~/projects/drink-intl$</span>
-                <span className="w-2.5 h-5 bg-green-500 animate-pulse inline-block"></span>
-              </div>
+      {/* Active Prompt */}
+      <div className="pt-8 flex items-center gap-2">
+        <span className="font-bold text-fuchsia-400">admin@buse-os:~/projects/drink-intl$</span>
+        <span className="w-2.5 h-5 bg-white animate-pulse inline-block"></span>
+      </div>
 
-            </div>
-          </main>
-        )}
+    </div>
+  </main>
+)}
 
         
       {/* =========================================
