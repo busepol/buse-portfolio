@@ -142,8 +142,7 @@ export default function CommSystem() {
             return (
               <div 
                 key={node.id}
-                onMouseEnter={() => setActiveNode(node)}  
-                onMouseLeave={() => setActiveNode(null)}     
+                onMouseEnter={() => setActiveNode(node)}      
                 className={`group relative p-6 cursor-pointer transition-all duration-300 flex flex-col justify-between min-h-[280px] ${isActive ? node.colors.bgActive : node.colors.bgInactive}`}
               >
                 <div>
