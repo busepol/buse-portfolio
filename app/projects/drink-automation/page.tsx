@@ -352,12 +352,9 @@ export default function DrinkAutomationProject() {
   );
 }
 
-  // =============================================================
-// 🛰️ COMMUNICATION ENGINEER VIEW (THE ARCHITECT)
-// =============================================================
 function CommEngineerView({ activeNode }: { activeNode: string }) {
   return (
-    <main className="min-h-screen bg-[#020617] text-blue-300 p-4 md:p-12 font-mono relative overflow-hidden">
+    <main className="min-h-screen bg-[#020617] text-blue-300 p-4 md:p-12 font-mono relative overflow-hidden animate-in fade-in duration-500">
       {/* Blueprint Grid Effect */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
            style={{ backgroundImage: 'linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
@@ -372,13 +369,13 @@ function CommEngineerView({ activeNode }: { activeNode: string }) {
               <div className="w-2 h-2 bg-yellow-500"></div>
               <div className="w-2 h-2 bg-green-500"></div>
             </div>
-            <span className="text-white font-bold tracking-widest text-sm">DRINK_INT :: LOGIC_MONITOR</span>
+            <span className="text-white font-bold tracking-widest text-sm">DRINK_INT :: AUTO_PIPELINE_MONITOR</span>
           </div>
           <div className="text-[10px] text-blue-400 flex gap-6 mt-4 md:mt-0">
             <span>UPLINK: <span className="text-green-400">ENCRYPTED</span></span>
-            <span>LATENCY: <span className="text-green-400">14ms</span></span>
-            <span>MTU: <span className="text-white">1500</span></span>
-            <span>PACKETS: <span className="text-white">2,404,112</span></span>
+            <span>LLM_API: <span className="text-green-400">ONLINE</span></span>
+            <span>ERP_SYNC: <span className="text-white">ACTIVE</span></span>
+            <span>PROCESSED: <span className="text-white">1,402</span></span>
           </div>
         </div>
 
@@ -387,13 +384,16 @@ function CommEngineerView({ activeNode }: { activeNode: string }) {
           {/* Column 1: System Telemetry */}
           <div className="space-y-6">
             <div className="border border-blue-900 bg-black/40 p-5 rounded-sm">
-              <h4 className="text-blue-500 text-[10px] font-bold mb-4 uppercase tracking-tighter">System_Variables</h4>
-              <div className="space-y-2 text-xs">
-                <div className="flex justify-between"><span>CPU_USAGE</span><span className="text-white">12%</span></div>
+              <h4 className="text-blue-500 text-[10px] font-bold mb-4 uppercase tracking-tighter">System_Architecture</h4>
+              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                A highly complex B2B order processing pipeline. Multi-modal n8n architecture utilizing Gemini LLMs to parse unstructured email data into strict ERP schemas.
+              </p>
+              <div className="space-y-2 text-xs border-t border-blue-900/50 pt-4">
+                <div className="flex justify-between"><span>N8N_WORKER</span><span className="text-green-400">RUNNING</span></div>
+                <div className="flex justify-between"><span>GEMINI_QUOTA</span><span className="text-white">88%</span></div>
                 <div className="flex justify-between"><span>MEM_BUFFER</span><span className="text-white">440MB</span></div>
-                <div className="flex justify-between"><span>API_UPTIME</span><span className="text-green-400">99.9%</span></div>
                 <div className="w-full bg-blue-900/30 h-1 mt-2">
-                  <div className="bg-blue-500 h-full w-[65%] animate-pulse"></div>
+                  <div className="bg-blue-500 h-full w-[88%]"></div>
                 </div>
               </div>
             </div>
@@ -401,10 +401,11 @@ function CommEngineerView({ activeNode }: { activeNode: string }) {
             <div className="border border-cyan-900 bg-black/40 p-5 rounded-sm">
               <h4 className="text-cyan-500 text-[10px] font-bold mb-4 uppercase tracking-tighter">Protocol_Stack</h4>
               <ul className="text-[10px] space-y-1 text-cyan-300/70 italic">
-                <li>{">"} SMTP/Webhook (Ingress)</li>
-                <li>{">"} REST/HTTPS (Gotenberg)</li>
-                <li>{">"} JSON-RPC (Gemini-1.5)</li>
-                <li>{">"} SQL/ODBC (Panthera Bridge)</li>
+                <li>{">"} n8n Automation Engine</li>
+                <li>{">"} Gemini LLM (AI Parsing)</li>
+                <li>{">"} Python (openpyxl, pandas)</li>
+                <li>{">"} Gotenberg (PDF Render)</li>
+                <li>{">"} Panthera ERP Gateway</li>
               </ul>
             </div>
           </div>
@@ -412,61 +413,61 @@ function CommEngineerView({ activeNode }: { activeNode: string }) {
           {/* Column 2 & 3: Main Flow Logic */}
           <div className="lg:col-span-2 space-y-6">
             <div className="border border-white/10 bg-slate-900/50 p-8 rounded-lg relative">
-              <div className="absolute top-0 right-0 p-2 text-[10px] text-white/20">ARC_REF: 5992-A</div>
-              <h2 className="text-2xl text-white font-bold mb-6 tracking-tighter">End-to-End Pipeline Path</h2>
+              <div className="absolute top-0 right-0 p-2 text-[10px] text-white/20">ARC_REF: N8N-PIPE-V2</div>
+              <h2 className="text-2xl text-white font-bold mb-6 tracking-tighter">Active Pipeline Routing Logic</h2>
               
-              <div className="flex flex-col gap-8">
-                {/* Visual Flow Representation */}
+              <div className="flex flex-col gap-6">
                 {[
-                  { label: "INGRESS", detail: "Gmail Webhook polling binary attachments", color: "blue" },
-                  { label: "MIME_ROUTE", detail: "Identify XLSX vs PDF via Gotenberg API", color: "fuchsia" },
-                  { label: "COMPUTE", detail: "Gemini-Pro V-LLM data extraction", color: "cyan" },
-                  { label: "EGRESS", detail: "Final JSON mapping to Panthera ERP", color: "emerald" }
+                  { label: "INGRESS & ROUTING", detail: "Email listener separates files. IF Smart-Template (XLSX) -> direct route. IF DOCX -> Gotenberg API conversion to PDF.", color: "blue" },
+                  { label: "AI EXTRACTION (GEMINI)", detail: "LLM extracts unstructured data from PDFs/Email Bodies into Panthera JSON ERP schema.", color: "fuchsia" },
+                  { label: "FORMATTING & LOGIC", detail: "Group rows, parse complex multi-orders, format output, and build HTML document for records.", color: "cyan" },
+                  { label: "EGRESS (PANTHERA ERP)", overlay: "Upload to drink-iungo, mark read, dispatch confirmation email.", color: "emerald" }
                 ].map((step, index) => (
                   <div key={index} className="flex items-center gap-6 group">
                     <div className={`w-12 h-12 border border-${step.color}-500 flex items-center justify-center shrink-0 group-hover:bg-${step.color}-500 transition-colors`}>
                       <span className="text-white text-xs font-bold">0{index+1}</span>
                     </div>
-                    <div className="flex-1 border-b border-white/5 pb-4">
+                    <div className="flex-1 border-b border-white/5 pb-3">
                       <div className={`text-${step.color}-400 font-bold text-xs`}>{step.label}</div>
-                      <div className="text-slate-400 text-[11px]">{step.detail}</div>
+                      <div className="text-slate-400 text-[11px] leading-relaxed">{step.detail || step.overlay}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="border border-blue-500/20 bg-[#040d21] p-6 font-mono text-[11px] text-emerald-400/80 shadow-2xl">
-              <div className="text-blue-500 mb-2">// Sample Panthera Output Payload</div>
-              {`{
-  "header": { "order": "DRINK_104", "status": "200_OK" },
-  "payload": {
-    "sku_mapping": "EXACT_MATCH",
-    "delivery_timestamp": "2024-09-12T08:00:00Z",
-    "buffer_binary": "0x4A6B22..." 
-  }
-}`}
+            <div className="border border-blue-500/20 bg-[#040d21] p-5">
+              <h4 className="text-blue-500 text-[10px] font-bold mb-3 uppercase tracking-tighter">MODULE :: Python_Smart_Templates</h4>
+              <p className="text-xs text-emerald-400/80 leading-relaxed font-mono">
+                For manual agent input scenarios, developed a custom Python tool using <span className="text-white">openpyxl</span>. 
+                Embeds ANAGRAFICA CLIENTI and CATALOGO data directly from Panthera ERP into hidden backend sheets. 
+                Utilizes dynamic Excel FILTER() and VLOOKUP() formulas to strictly restrict frontend inputs to valid SKUs and allowed quantities, ensuring 100% ERP compatibility prior to ingestion.
+              </p>
             </div>
           </div>
 
-          {/* Column 4: Logic Gates */}
+          {/* Column 4: Logic Gates & Challenges */}
           <div className="space-y-6">
             <div className="border border-fuchsia-900 bg-black/40 p-5">
-              <h4 className="text-fuchsia-500 text-[10px] font-bold mb-4 uppercase tracking-tighter">Logic_Gates</h4>
+              <h4 className="text-fuchsia-500 text-[10px] font-bold mb-4 uppercase tracking-tighter">Incident_Mitigation</h4>
               <div className="space-y-4">
                 <div className="p-2 border border-fuchsia-900/30">
-                  <div className="text-[10px] text-white font-bold">IF: ATTACHMENT_EXISTS</div>
-                  <div className="text-[9px] text-slate-500 tracking-tighter">ELSE: SCAN_BODY_TEXT</div>
+                  <div className="text-[10px] text-white font-bold mb-1">ERR: API_RATE_LIMITS</div>
+                  <div className="text-[9px] text-slate-400">Gemini API timeouts under heavy load mitigated via exponential backoff retry logic.</div>
                 </div>
                 <div className="p-2 border border-fuchsia-900/30">
-                  <div className="text-[10px] text-white font-bold">SWITCH: MIME_TYPE</div>
-                  <div className="text-[9px] text-slate-500 tracking-tighter">ROUTES: PDF | XLSX | DOCX</div>
+                  <div className="text-[10px] text-white font-bold mb-1">ERR: MIME_PROCESSING</div>
+                  <div className="text-[9px] text-slate-400">Resolved binary PDF recognition failure in n8n HTTP nodes for Gotenberg API.</div>
+                </div>
+                <div className="p-2 border border-fuchsia-900/30">
+                  <div className="text-[10px] text-white font-bold mb-1">LOGIC: SPEDIZIONE COMPLESSA</div>
+                  <div className="text-[9px] text-slate-400">Specific detection rules deployed for legacy orders with multiple delivery dates.</div>
                 </div>
               </div>
             </div>
 
-            <Link href="/" className="flex items-center justify-center p-4 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all font-bold text-xs">
-              [ TERMINATE_LINK ]
+            <Link href="/" className="flex items-center justify-center p-4 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all font-bold text-xs uppercase tracking-widest">
+              [ Terminate_Link ]
             </Link>
           </div>
         </div>
@@ -475,13 +476,10 @@ function CommEngineerView({ activeNode }: { activeNode: string }) {
   );
 }
 
-// =============================================================
-// 💻 TERMINAL VIEW (THE KEYBOARD WARRIOR)
-// =============================================================
 function TerminalView() {
   return (
-    <main className="min-h-screen bg-[#050505] text-green-500 p-4 md:p-8 font-mono">
-      <div className="max-w-6xl mx-auto border border-green-900/40 bg-[#0a0a0a] shadow-[0_0_80px_-20px_rgba(34,197,94,0.15)]">
+    <main className="min-h-screen bg-[#050505] text-green-500 p-4 md:p-8 font-mono animate-in fade-in duration-500">
+      <div className="max-w-7xl mx-auto border border-green-900/40 bg-[#0a0a0a] shadow-[0_0_80px_-20px_rgba(34,197,94,0.15)]">
         
         {/* Terminal Header */}
         <div className="flex items-center justify-between px-6 py-3 bg-[#111] border-b border-green-900/30">
@@ -489,66 +487,129 @@ function TerminalView() {
             <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
             <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-            <span className="ml-4 text-xs text-green-700 font-bold uppercase tracking-widest">buse@node-01:~/drink-int</span>
+            <span className="ml-4 text-xs text-green-700 font-bold uppercase tracking-widest">buse@node-01:~/b2b-pipeline/drink-int</span>
           </div>
           <div className="text-[10px] text-green-800">SYSTEM_UPTIME: 4421:12:05</div>
         </div>
 
-        <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* ASCII Art Welcome Message */}
+        <div className="px-6 pt-6 pb-2 hidden md:block">
+          <pre className="text-green-400 font-bold text-[10px] md:text-xs leading-tight">
+{`
+ ____ ___  ____    ____  ___ ____  _____ _     ___ _   _ _____ 
+| __ )__ \\| __ )  |  _ \\|_ _|  _ \\| ____| |   |_ _| \\ | | ____|
+|  _ \\ / /|  _ \\  | |_) || || |_) |  _| | |    | ||  \\| |  _|  
+| |_) / /_| |_) | |  __/ | ||  __/| |___| |___ | || |\\  | |___ 
+|____/____|____/  |_|   |___|_|   |_____|_____|___|_| \\_|_____|
+:: MULTI-MODAL AUTOMATION ENGINE & LLM PARSER ::
+`}
+          </pre>
+        </div>
+
+        <div className="p-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
           
           {/* Left Panel: Process Tree */}
-          <div className="md:col-span-1 space-y-4">
-            <h2 className="text-[10px] text-green-700 font-bold tracking-widest border-b border-green-900/50 pb-2">PROCESS_TREE</h2>
-            <div className="text-[11px] space-y-1 text-green-500/70">
-              <p>├─ n8n-server <span className="text-white">[RUNNING]</span></p>
-              <p>│  └─ webhook_listener</p>
-              <p>├─ python-ai-module <span className="text-white">[IDLE]</span></p>
-              <p>└─ gotenberg-api <span className="text-white">[READY]</span></p>
+          <div className="lg:col-span-1 space-y-6">
+            <div>
+              <h2 className="text-[10px] text-green-700 font-bold tracking-widest border-b border-green-900/50 pb-2 mb-3">PROCESS_TREE</h2>
+              <div className="text-[11px] space-y-1 text-green-500/70">
+                <p>├─ b2b_pipeline_core <span className="text-white">[RUNNING]</span></p>
+                <p>│  ├─ webhook_listener</p>
+                <p>│  └─ router_node</p>
+                <p>├─ gemini-llm-api <span className="text-white">[ACTIVE]</span></p>
+                <p>├─ python-data-parser <span className="text-white">[IDLE]</span></p>
+                <p>└─ gotenberg-api <span className="text-white">[READY]</span></p>
+              </div>
             </div>
             
-            <div className="mt-8">
-              <h2 className="text-[10px] text-green-700 font-bold tracking-widest border-b border-green-900/50 pb-2 mb-4">ENV_VARIABLES</h2>
+            <div>
+              <h2 className="text-[10px] text-green-700 font-bold tracking-widest border-b border-green-900/50 pb-2 mb-3">ENV_VARIABLES</h2>
               <div className="text-[10px] grid grid-cols-2 gap-2 text-green-600">
                 <span>PORT</span><span className="text-white">5678</span>
-                <span>DB_SYNC</span><span className="text-white">TRUE</span>
+                <span>B2B_MODE</span><span className="text-white">TRUE</span>
                 <span>LOG_LVL</span><span className="text-white">DEBUG</span>
+                <span>AI_MDL</span><span className="text-white">GEMINI_1.5</span>
               </div>
             </div>
           </div>
 
-          {/* Center Panel: Logs & Stats */}
-          <div className="md:col-span-3">
-            <h2 className="text-[10px] text-green-700 font-bold tracking-widest border-b border-green-900/50 pb-2 mb-4">SYSTEM_DIAGNOSTICS</h2>
+          {/* Center Panel: Documentation & Live Logs */}
+          <div className="lg:col-span-3 flex flex-col gap-8">
             
-            <div className="bg-black p-4 border border-green-900/30 h-64 overflow-y-auto text-[11px] mb-6 shadow-inner">
-              <p className="text-blue-400">{'>>'} Fetching ingestion logs for Drink Int...</p>
-              <p className="text-green-400">2026-06-22 18:40:01 | INGEST :: Gmail Trigger [OK]</p>
-              <p className="text-green-400">2026-06-22 18:40:05 | AI_MOD :: Gemini-2.5-flash analysis [88% QUOTA REMAINING]</p>
-              <p className="text-green-400">2026-06-22 18:40:12 | FORMAT :: Mapping JSON to Panthera ERP</p>
-              <p className="text-white animate-pulse">2026-06-22 18:40:15 | PIPELINE :: STANDBY_FOR_INCOMING_PACKET...</p>
+            {/* Command Executions (Project Details) */}
+            <div className="space-y-6 text-xs md:text-sm leading-relaxed">
+              <div>
+                <div className="flex items-center gap-2 mb-2 text-green-400">
+                  <span className="font-bold">buse@node-01:~/b2b-pipeline$</span>
+                  <span className="text-white">cat architecture_overview.md</span>
+                </div>
+                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-1">
+                  Engineered a highly complex B2B order processing pipeline. Multi-modal n8n architecture utilizing Gemini LLMs to parse highly varied, unstructured email data into strict Panthera ERP schemas.
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-2 text-green-400">
+                  <span className="font-bold">buse@node-01:~/b2b-pipeline$</span>
+                  <span className="text-white">cat python_smart_template.py --info</span>
+                </div>
+                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-1">
+                  Developed custom Python tool (openpyxl) for manual agent inputs. Embeds ANAGRAFICA CLIENTI and CATALOGO data directly from Panthera ERP into hidden backend sheets. Uses dynamic Excel FILTER() and VLOOKUP() formulas to strictly restrict frontend inputs to valid SKUs and quantities, ensuring 100% ERP compatibility.
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-2 text-green-400">
+                  <span className="font-bold">buse@node-01:~/b2b-pipeline$</span>
+                  <span className="text-white">show bug_reports --resolved</span>
+                </div>
+                <div className="pl-4 border-l-2 border-green-800 text-green-500/90 py-1 space-y-1">
+                  <p><span className="text-green-300 font-bold">[FIXED] MIME-Type Errors:</span> Resolved binary PDF recognition failure in Gotenberg HTTP requests.</p>
+                  <p><span className="text-green-300 font-bold">[FIXED] API Rate Limiting:</span> Mitigated Gemini timeouts via exponential backoff retry logic.</p>
+                  <p><span className="text-green-300 font-bold">[FIXED] Complex Logistics:</span> Built parsing rules for legacy B2B orders with multiple conflicting delivery dates.</p>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div className="border border-green-900/30 p-3">
-                <div className="text-[9px] text-green-700">TOKEN_USAGE</div>
-                <div className="text-lg text-white">12.4k</div>
+            {/* Live System Diagnostics */}
+            <div>
+              <h2 className="text-[10px] text-green-700 font-bold tracking-widest border-b border-green-900/50 pb-2 mb-4">SYSTEM_DIAGNOSTICS // B2B_PIPELINE_TAIL</h2>
+              
+              <div className="bg-black p-4 border border-green-900/30 h-56 overflow-y-auto text-[11px] mb-6 shadow-inner flex flex-col justify-end">
+                <p className="text-blue-400">{'>>'} Fetching ingestion logs for Drink Int B2B Pipeline...</p>
+                <p className="text-green-400">2026-06-22 18:40:01 | INGEST :: Gmail Trigger [RCV_OK]</p>
+                <p className="text-green-400">2026-06-22 18:40:02 | ROUTER :: File format identified: MS Word. Initiating Gotenberg...</p>
+                <p className="text-emerald-400">2026-06-22 18:40:04 | GOTENBERG :: Converting DOCX to PDF [STATUS: 200 OK]</p>
+                <p className="text-green-400">2026-06-22 18:40:05 | AI_MOD :: Gemini-1.5 analysis [EXTRACTING JSON_SCHEMA]</p>
+                <p className="text-amber-400">2026-06-22 18:40:10 | LOGIC :: Multiple delivery dates detected. Spedizione Complessa rules applied.</p>
+                <p className="text-green-400">2026-06-22 18:40:12 | FORMAT :: Mapping JSON to Panthera ERP</p>
+                <p className="text-emerald-400 font-bold">2026-06-22 18:40:14 | IUNGO_GATEWAY :: Order pushed successfully. Confirmation email dispatched.</p>
+                <p className="text-white animate-pulse mt-2">2026-06-22 18:40:15 | B2B_PIPELINE :: STANDBY_FOR_INCOMING_WEBHOOK<span className="inline-block w-2 h-3 bg-white ml-1 align-middle"></span></p>
               </div>
-              <div className="border border-green-900/30 p-3">
-                <div className="text-[9px] text-green-700">ERP_SYNC</div>
-                <div className="text-lg text-white">440ms</div>
-              </div>
-              <div className="border border-green-900/30 p-3">
-                <div className="text-[9px] text-green-700">STATUS</div>
-                <div className="text-lg text-emerald-400 animate-pulse">ONLINE</div>
-              </div>
-            </div>
 
-            <div className="mt-8 flex items-center gap-4 border-t border-green-900/20 pt-6">
-              <Link href="/" className="text-[10px] px-4 py-2 border border-green-700 hover:bg-green-900 text-green-400 transition-all">
-                [cd ..]
-              </Link>
-              <div className="text-[10px] text-green-900 font-mono">
-                BuseOS Terminal v2.4 | Powered by Python/n8n
+              {/* Status Metrics */}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="border border-green-900/30 p-3">
+                  <div className="text-[9px] text-green-700">TOKEN_USAGE</div>
+                  <div className="text-lg text-white">12.4k</div>
+                </div>
+                <div className="border border-green-900/30 p-3">
+                  <div className="text-[9px] text-green-700">B2B_SYNC</div>
+                  <div className="text-lg text-white">440ms</div>
+                </div>
+                <div className="border border-green-900/30 p-3">
+                  <div className="text-[9px] text-green-700">STATUS</div>
+                  <div className="text-lg text-emerald-400 animate-pulse">ONLINE</div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex items-center gap-4 border-t border-green-900/20 pt-6">
+                <Link href="/" className="text-[10px] px-4 py-2 border border-green-700 hover:bg-green-900 text-green-400 transition-all uppercase tracking-widest">
+                  [ cd .. Return to Root ]
+                </Link>
+                <div className="text-[10px] text-green-900 font-mono">
+                  BuseOS Terminal v2.4 | Powered by Python/n8n
+                </div>
               </div>
             </div>
           </div>
@@ -557,6 +618,9 @@ function TerminalView() {
     </main>
   );
 }
+
+
+
 
 // 🇮🇹 ITALIAN VIEW (QUESTURA SIMULATOR)
 function ItalianView() {
