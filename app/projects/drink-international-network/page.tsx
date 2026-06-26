@@ -274,94 +274,158 @@ export default function DrinkNetworkProject() {
           </div>
         </main>
       )}
-
       {/* =========================================
-          MODE 3: COMM_SYS (NOC DASHBOARD)
-          ========================================= */}
-      {currentTheme === 'comm' && (
-        <main className="max-w-6xl mx-auto p-8 font-mono animate-in fade-in duration-500">
-          
-          <nav className="mb-12 relative z-50">
-            <button 
-              onClick={() => {
-                localStorage.setItem('theme', 'comm');
-                window.location.href = '/';
-              }} 
-              className="px-4 py-2 bg-blue-950/40 text-cyan-400 border border-blue-800 hover:bg-blue-900 hover:text-cyan-200 transition-colors text-xs tracking-widest uppercase relative z-50 cursor-pointer"
-            >
-              [TERMINATE_SESSION]
-            </button>
-          </nav>
+            MODE 3: COMM_SYS (NOC Dashboard)
+            ========================================= */}
+        {currentTheme === 'comm' && (
+          <main className="max-w-6xl mx-auto p-4 md:p-8 py-16 animate-in fade-in zoom-in-95 duration-500 font-mono text-cyan-400">
+            
+            {/* Navigation */}
+            <nav className="mb-8">
+              <button 
+                onClick={() => window.location.href = '/'}
+                className="text-xs font-bold text-blue-500 hover:text-cyan-300 transition-colors border border-blue-900/50 bg-blue-950/20 px-4 py-2 hover:bg-blue-900/40"
+              >
+                [TERMINATE_SESSION]
+              </button>
+            </nav>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-            {/* Main Status Panel */}
-            <div className="md:col-span-3 border border-blue-800/50 bg-[#020617]/80 p-6 shadow-[0_0_30px_rgba(59,130,246,0.1)] flex justify-between items-center">
-              <div>
-                <h1 className="text-2xl font-bold text-cyan-400 tracking-wider">DRINK_INTL // CAMPUS_TOPOLOGY</h1>
-                <p className="text-blue-500/80 text-sm mt-1">L3 Core Aggregation & Enterprise Services</p>
-              </div>
-              <div className="text-right">
-                <div className="text-xs text-blue-400 mb-1">SYSTEM_STATUS</div>
-                <div className="text-emerald-400 font-bold flex items-center gap-2 justify-end">
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span>
-                  OPTIMAL (HA_ACTIVE)
+            <div className="flex flex-col gap-6">
+              
+              {/* HEADER PANEL */}
+              <div className="border border-blue-800 bg-[#040d21] p-6 shadow-[0_0_20px_rgba(6,182,212,0.15)] flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-cyan-500/30 animate-scan hidden md:block"></div>
+                <div>
+                  <h1 className="text-3xl font-bold text-cyan-400 tracking-wider mb-2">DRINK_INTL // CAMPUS_TOPOLOGY</h1>
+                  <p className="text-blue-500 text-sm">L3 Core Aggregation & Enterprise Services</p>
                 </div>
-              </div>
-            </div>
-
-            {/* VLAN Monitor */}
-            <div className="md:col-span-2 border border-blue-900/50 bg-blue-950/10 p-6">
-              <h2 className="text-sm font-bold text-blue-400 mb-4 border-b border-blue-900/50 pb-2">SEGMENTATION_MATRIX (802.1Q)</h2>
-              <div className="space-y-3">
-                {[
-                  { id: '10', name: 'CORP_DATA', ip: '192.168.10.0/24', status: 'UP' },
-                  { id: '20', name: 'ENG_WORKSTN', ip: '192.168.20.0/24', status: 'UP' },
-                  { id: '30', name: 'SERVER_FARM', ip: '192.168.30.0/24', status: 'UP' },
-                  { id: '60', name: 'IOT_INFRA', ip: '192.168.60.0/24', status: 'UP' },
-                  { id: '70', name: 'VOICE_IP', ip: '192.168.70.0/24', status: 'PRIORITY_Q' },
-                ].map((vlan) => (
-                  <div key={vlan.id} className="flex justify-between items-center p-2 bg-[#020617] border border-blue-900/30 text-sm hover:border-cyan-500/50 transition-colors">
-                    <div className="flex gap-4">
-                      <span className="text-cyan-500 w-8">V{vlan.id}</span>
-                      <span className="text-blue-300 w-28">{vlan.name}</span>
-                      <span className="text-blue-600 hidden md:inline">{vlan.ip}</span>
-                    </div>
-                    <span className={vlan.status === 'UP' ? 'text-emerald-500' : 'text-fuchsia-400'}>
-                      [{vlan.status}]
-                    </span>
+                <div className="mt-4 md:mt-0 text-right">
+                  <div className="text-xs text-blue-500 mb-1">SYSTEM_STATUS</div>
+                  <div className="text-emerald-400 font-bold tracking-widest flex items-center gap-2 justify-end">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    OPTIMAL (HA_ACTIVE)
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Protocols Monitor */}
-            <div className="space-y-6">
-              {/* OSPF Box */}
-              <div className="border border-blue-900/50 bg-blue-950/10 p-6">
-                <h2 className="text-sm font-bold text-blue-400 mb-4 border-b border-blue-900/50 pb-2">L3_ROUTING (OSPF)</h2>
-                <div className="text-xs space-y-2">
-                  <div className="flex justify-between"><span className="text-blue-500">ADJACENCIES:</span> <span className="text-cyan-300">FULL</span></div>
-                  <div className="flex justify-between"><span className="text-blue-500">CONVERGENCE:</span> <span className="text-cyan-300">0.42s</span></div>
-                  <div className="flex justify-between"><span className="text-blue-500">DR/BDR:</span> <span className="text-cyan-300">SYNCED</span></div>
                 </div>
               </div>
 
-              {/* HSRP Box */}
-              <div className="border border-blue-900/50 bg-blue-950/10 p-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-16 h-16 bg-blue-500/5 blur-2xl rounded-full"></div>
-                <h2 className="text-sm font-bold text-blue-400 mb-4 border-b border-blue-900/50 pb-2">HA_GATEWAY (HSRP)</h2>
-                <div className="text-xs space-y-2 relative z-10">
-                  <div className="flex justify-between"><span className="text-blue-500">VIP_ADDR:</span> <span className="text-cyan-300">192.168.*.1</span></div>
-                  <div className="flex justify-between"><span className="text-blue-500">CORE_A:</span> <span className="text-emerald-400">ACTIVE</span></div>
-                  <div className="flex justify-between"><span className="text-blue-500">CORE_B:</span> <span className="text-yellow-500">STANDBY</span></div>
-                  <div className="flex justify-between mt-2 pt-2 border-t border-blue-900/30"><span className="text-blue-500">PREEMPT:</span> <span className="text-cyan-300">ENABLED</span></div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                {/* LEFT COLUMN: Context & Protocols */}
+                <div className="lg:col-span-1 flex flex-col gap-6">
+                  
+                  {/* CONTEXT LOG */}
+                  <div className="border border-blue-900/50 bg-[#040d21] p-5">
+                    <div className="text-xs text-blue-500 mb-4 border-b border-blue-900/50 pb-2">[SYS_ORIGIN] // REVERSE_ENGINEERING_LOG</div>
+                    <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                      Infrastructure design modeled closely after a production enterprise campus network observed during an industry internship. 
+                    </p>
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      Analyzed and reverse-engineered the core topology to study how modern mid-sized enterprises balance high availability, scalability, and strict security. Implements a triangle topology at distribution/core layers for near-zero downtime.
+                    </p>
+                  </div>
+
+                  {/* PROTOCOL STACK */}
+                  <div className="border border-blue-900/50 bg-[#040d21] p-5">
+                    <div className="text-xs text-blue-500 mb-4 border-b border-blue-900/50 pb-2">[PROTOCOL_STACK]</div>
+                    <ul className="space-y-4 text-xs">
+                      <li>
+                        <span className="text-cyan-400 font-bold block mb-1">{'>>'} L3_ROUTING (OSPF)</span>
+                        <span className="text-slate-400">Single-Area OSPF (Area 0) for sub-second convergence. Process IDs configured exclusively as local-significance identifiers.</span>
+                      </li>
+                      <li>
+                        <span className="text-cyan-400 font-bold block mb-1">{'>>'} GATEWAY_HA (HSRP)</span>
+                        <span className="text-slate-400">Seamless first-hop virtual gateway redundancy across all end-user subnets.</span>
+                      </li>
+                      <li>
+                        <span className="text-cyan-400 font-bold block mb-1">{'>>'} LINK_AGG (LACP)</span>
+                        <span className="text-slate-400">EtherChannel deployed for backbone bandwidth aggregation and link-level failover.</span>
+                      </li>
+                      <li>
+                        <span className="text-cyan-400 font-bold block mb-1">{'>>'} SEGMENTATION (802.1Q)</span>
+                        <span className="text-slate-400">VLAN tagging and auxiliary Voice VLAN mapping for deterministic traffic.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* RIGHT COLUMN: Matrix & Diagnostics */}
+                <div className="lg:col-span-2 flex flex-col gap-6">
+                  
+                  {/* SEGMENTATION MATRIX */}
+                  <div className="border border-blue-900/50 bg-[#040d21] p-5 overflow-x-auto">
+                    <div className="text-xs text-blue-500 mb-4 border-b border-blue-900/50 pb-2">SEGMENTATION_MATRIX (802.1Q)</div>
+                    <table className="w-full text-xs text-left">
+                      <thead>
+                        <tr className="text-blue-500/70 border-b border-blue-900/30">
+                          <th className="pb-2 font-normal">VID</th>
+                          <th className="pb-2 font-normal">DEPARTMENT</th>
+                          <th className="pb-2 font-normal hidden sm:table-cell">PRIMARY_ELEMENTS</th>
+                          <th className="pb-2 font-normal">HSRP_VIP</th>
+                          <th className="pb-2 font-normal text-right">STATE</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-cyan-300">
+                        <tr className="border-b border-blue-900/20 hover:bg-blue-900/10 transition-colors">
+                          <td className="py-3 text-emerald-400">V10</td>
+                          <td>CORP_DATA</td>
+                          <td className="text-slate-400 hidden sm:table-cell">PC1, Laptop2, Printer</td>
+                          <td className="font-mono">192.168.10.1</td>
+                          <td className="text-right text-emerald-500">[UP]</td>
+                        </tr>
+                        <tr className="border-b border-blue-900/20 hover:bg-blue-900/10 transition-colors">
+                          <td className="py-3 text-emerald-400">V20</td>
+                          <td>ENG_WORKSTN</td>
+                          <td className="text-slate-400 hidden sm:table-cell">PC2, PC3, Mobile</td>
+                          <td className="font-mono">192.168.20.1</td>
+                          <td className="text-right text-emerald-500">[UP]</td>
+                        </tr>
+                        <tr className="border-b border-blue-900/20 hover:bg-blue-900/10 transition-colors">
+                          <td className="py-3 text-emerald-400">V30</td>
+                          <td>SERVER_FARM</td>
+                          <td className="text-slate-400 hidden sm:table-cell">App & Storage Srv</td>
+                          <td className="font-mono">192.168.30.1</td>
+                          <td className="text-right text-emerald-500">[UP]</td>
+                        </tr>
+                        <tr className="border-b border-blue-900/20 hover:bg-blue-900/10 transition-colors">
+                          <td className="py-3 text-emerald-400">V60</td>
+                          <td>IOT_INFRA</td>
+                          <td className="text-slate-400 hidden sm:table-cell">RFID, Doors, WAPs</td>
+                          <td className="font-mono">192.168.60.1</td>
+                          <td className="text-right text-emerald-500">[UP]</td>
+                        </tr>
+                        <tr className="hover:bg-blue-900/10 transition-colors">
+                          <td className="py-3 text-emerald-400">V70</td>
+                          <td>VOICE_IP</td>
+                          <td className="text-slate-400 hidden sm:table-cell">Cisco 7960 Phones</td>
+                          <td className="font-mono">192.168.70.1</td>
+                          <td className="text-right text-fuchsia-400">[QOS_PRIORITY]</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* DIAGNOSTICS CONSOLE */}
+                  <div className="border border-blue-900/50 bg-[#020617] p-0 overflow-hidden flex flex-col h-full min-h-[250px]">
+                    <div className="bg-[#0f172a] px-4 py-2 border-b border-blue-900/50 flex justify-between items-center text-xs">
+                      <span className="text-blue-400">SYS_VERIFICATION_LOGS</span>
+                      <span className="text-slate-500">AUTO_SCROLL: ON</span>
+                    </div>
+                    <div className="p-4 text-xs font-mono space-y-2 text-slate-300 h-full">
+                      <div><span className="text-blue-500">root@noc:~#</span> ./run_diagnostics.sh --target=campus_core</div>
+                      <div className="text-emerald-400">[OK] OSPF_ADJACENCIES: Full DR/BDR synchronization validated between L3 switches & perimeter.</div>
+                      <div className="text-emerald-400">[OK] HSRP_STATE: Active/Standby designated. Preempt operations verified during link failure sim.</div>
+                      <div className="text-emerald-400">[OK] LACP_BUNDLE: Logical interfaces display L2 'In Use' state. Ports bundled successfully.</div>
+                      <div className="text-emerald-400">[OK] DATA_PLANE: Extended ping & traceroute validating reachability to simulated ISP edge.</div>
+                      <div className="text-amber-400 mt-2">{'>>'} System operations nominal. Awaiting commands... <span className="animate-pulse">_</span></div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
-
-          </div>
-        </main>
-      )}
+          </main>
+        )}
+      
 
       {/* =========================================
           MODE 4: ITALIANO (Questura Simulator A2)
