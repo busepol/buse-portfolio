@@ -93,7 +93,14 @@ export default function DartPlatformProject() {
           ========================================= */}
       {currentTheme === 'comm' && (
         <div className="max-w-5xl mx-auto font-mono text-sm relative">
+          {/* Blueprint Grid Effect */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
           <nav className="w-full mb-12">
+
             <Link href="/" className="text-cyan-500 hover:text-cyan-400 transition-colors flex items-center gap-2">
               <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
               [TERMINATE_UPLINK :: RETURN_TO_NOC]
@@ -151,6 +158,7 @@ export default function DartPlatformProject() {
               <div className="text-slate-400">GET /app.js [200 OK] (15ms)</div>
               <div className="text-fuchsia-400 mt-2">{'>>>'} DOMContentLoaded event fired. Client UI ready.</div>
             </pre>
+          </div>
           </div>
         </div>
       )}

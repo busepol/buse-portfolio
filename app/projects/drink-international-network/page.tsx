@@ -359,7 +359,12 @@ export default function DrinkNetworkProject() {
             ========================================= */}
         {currentTheme === 'comm' && (
           <main className="max-w-6xl mx-auto p-4 md:p-8 py-16 animate-in fade-in zoom-in-95 duration-500 font-mono text-cyan-400">
-            
+            {/* Blueprint Grid Effect */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none" 
+                style={{ backgroundImage: 'linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+            </div>
+
+          <div className="max-w-7xl mx-auto relative z-10">
             {/* Navigation */}
             <nav className="mb-8">
               <button 
@@ -502,6 +507,7 @@ export default function DrinkNetworkProject() {
 
                 </div>
               </div>
+            </div>
             </div>
           </main>
         )}
